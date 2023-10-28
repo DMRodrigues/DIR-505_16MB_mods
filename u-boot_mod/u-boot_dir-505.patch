@@ -1,0 +1,39 @@
+diff --git a/u-boot/Makefile b/u-boot/Makefile
+index 1c02897..e8565b8 100644
+--- a/u-boot/Makefile
++++ b/u-boot/Makefile
+@@ -463,7 +463,7 @@ creatcomm-technology_d3321: ar933x_common
+ 	@$(MKCONFIG) -a ap121 mips mips ap121 ar7240 ar7240
+ 
+ d-link_dir-505_a1: ar933x_common
+-	@$(call config_init,D-Link DIR-505 A1,dir-505-a1,8,11,1,QCA_AR1311_SOC)
++	@$(call config_init,D-Link DIR-505 A1,dir-505-a1,16,11,1,QCA_AR1311_SOC)
+ 	@$(call define_add,CONFIG_FOR_DLINK_DIR505_A1,1)
+ 	@$(MKCONFIG) -a ap121 mips mips ap121 ar7240 ar7240
+ 
+diff --git a/u-boot/include/configs/ap121.h b/u-boot/include/configs/ap121.h
+index fac001f..52c1c01 100644
+--- a/u-boot/include/configs/ap121.h
++++ b/u-boot/include/configs/ap121.h
+@@ -192,7 +192,7 @@
+ 
+ 	#define CONFIG_BOOTARGS	"console=ttyS0,115200 root=31:06 "\
+ 				"rootfstype=squashfs init=/sbin/init "\
+-				"mtdparts=ar7240-nor0:64k(u-boot),64k(art),64k(mac),64k(nvram),256k(language),1024k(uImage),6656k(rootfs)"
++				"mtdparts=ar7240-nor0:64k(u-boot),64k(art),64k(mac),64k(nvram),256k(language),15872k(firmware)"
+ 
+ #elif defined(CONFIG_FOR_DRAGINO_MS14) ||\
+       defined(CONFIG_FOR_VILLAGE_TELCO_MP2)
+diff --git a/u-boot/include/configs/qca9k_common.h b/u-boot/include/configs/qca9k_common.h
+index 80838d8..f294114 100644
+--- a/u-boot/include/configs/qca9k_common.h
++++ b/u-boot/include/configs/qca9k_common.h
+@@ -80,7 +80,7 @@
+ 
+ /* Other environment variables */
+ #define CONFIG_BOOTFILE	firmware.bin
+-#define CONFIG_LOADADDR	0x80800000
++#define CONFIG_LOADADDR	0x81000000
+ #define CONFIG_AUTOLOAD	no
+ #define CONFIG_BOOTP_RANDOM_DELAY	1
+ 
